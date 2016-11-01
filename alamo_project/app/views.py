@@ -1,15 +1,26 @@
-from flask import render_template, flash, redirect
-from app import app, mongo
-from .forms import LoginForm
+from flask import render_template, flash, redirect, url_for, session, request, g
+from flask.ext.login import login_user, logout_user, current_user
+from app import app, mongo, lm
+#from .forms import LoginForm
 from flask import jsonify
 from datetime import datetime
+from .models import User
+from bson.objectid import ObjectId
 
 
-@app.route('/')
-@app.route('/index')
-def alamo():
-    return render_template('alamo.html',
-                           title='Home')
+# this sets the callback for reloading a user from the session
+# the function you set should take a user ID (a unicode) and
+# return a user object, or None if the user does not exist.
+@lm.user_loader
+def load_user(id):
+    print(id)
+    user = mongo.db.users.find_one({'_id': ObjectId(id)})
+    print('USER: ' + str(user))
+    if not user:
+        return None
+    return User(user['_id'], (user['first_name'] + ' ' + user['last_name']))
+
+
 
 @app.route('/base')
 def images():
@@ -17,56 +28,81 @@ def images():
                            title = 'Test')
 
 
-@app.route('/login', methods=['GET', 'POST'])
+@app.route('/')
+@app.route('/index')
+@app.route('/home')
+def home():
+    # current_user is a global variable representing the current user logged in
+    # we are checking to see if anyone is logged in and based on that, we show a specific template
+    if current_user.is_authenticated:
+        return render_template('home-logged.html')
+    else:
+        return render_template('home.html')
+
+
+
+
+@app.route('/home_logged')
+def home_logged():
+    print('### ' + str(current_user))
+    print('### ' + str(current_user.is_authenticated))
+    return render_template('home-logged.html')
+
+
+
+
+@app.route('/login', methods=['POST'])
 def login():
-    form = LoginForm()
-    if form.validate_on_submit():
-        users = mongo.db.users
-        user = users.find_one({'email': form.email.data})
-        print(user)
-        if user == None:
-            flash('That user does not exist')
-            return render_template('login.html', title='Sign In', form = form)
+    print('Email: ' + (str(request.form['email'])))
+    print('Password: ' + (str(request.form['password'])))
 
-        if ((user['email'] == form.email.data) & (user['pass'] == form.password.data)):
-            flash('Success')
+    # pulling mongoDB users
+    users = mongo.db.users
+    user = users.find_one({'email': request.form['email']})
+    if user == None:
+        flash('That user does not exist')
+        return redirect(url_for('home'))
 
-            # updating the last login time for the user in the database
-            date = datetime.today()
-            users.update_one({'user_id':user['user_id']},
-                             {'$set':{'last_login': date}})
+    if ((user['email'] == request.form['email']) & (user['pass'] == request.form['password'])):
 
-            #Pull the employee account information
-            employee_info = {'id': user['user_id'], 'first name' : user['first_name'], 'last name' : user['last_name'], 'last_login': user['last_login'],
-                     'privilege_level': user['privilege_level']}
+        # updating the last login time for the user in the database
+        timestamp = datetime.today()
+        users.update_one({'_id': user['_id']},
+                         {'$set': {'last_login': timestamp}})
 
-            return jsonify({'result' : employee_info})
-        else:
-            flash('Invalid Username or Password')
-            return render_template('login.html', title='Sign In', form=form)
+        # Pull the employee account information
+        employee_info = {'id': user['_id'], 'first_name': user['first_name'], 'last_name': user['last_name'],
+                         'last_login': user['last_login'],
+                         'privilege_level': user['privilege_level']}
+
+        for key in employee_info:
+            print(str(key) + ' : ' + str(employee_info[key]))
+
+        user_obj = User(user['_id'], (user['first_name'] + ' ' + user['last_name']))
+        login_user(user_obj)
+
+        # storing the name of the user into the global session variable
+        # so that we can check if someone is logged in and display their name
+        name = employee_info['first_name'] + ' ' + employee_info['last_name']
+        session['name'] = name
 
 
-    return render_template('login.html',
-                           title='Sign In',
-                           form = form)
+        #return jsonify({'result': employee_info})
+        return redirect(url_for('home_logged'))
+        #return render_template('home-logged.html')
+        #return redirect(url_for('home'))
+
+    else:
+        flash('Invalid Username or Password')
+        return redirect(url_for('home'))
+
+    return redirect(url_for('home'))
 
 
 
-@app.route('/example')
-def index():
-    user = {'nickname': 'Miguel'}
-    posts = [
-        {
-            'author': {'nickname': 'John'},
-            'body': 'Beautiful day in Portland!'
-        },
-        {
-            'author': {'nickname': 'Susan'},
-            'body': 'The Avengers movie was so cool!'
-        }
-    ]
-    return render_template('index.html',
-                           title='Home',
-                           user=user,
-                           posts=posts)
+@app.route("/logout")
+def logout():
+    logout_user()
+    return redirect(url_for('home'))
+
 
