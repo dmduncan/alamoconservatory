@@ -1,0 +1,16 @@
+{% if current_user.is_authenticated %}
+    {% extends "map_navbar_logout.html" %}
+{%  else %}
+    {% extends "map_navbar_login.html" %}
+{% endif %}
+
+{% block content %}
+    <link rel="stylesheet" href="../static/css/map.css" >
+    <!-- Wall select -->
+    <div class="container wall_select">
+      <h2 class="text-center">Alamo Map</h2>
+        <div class="wall_container">
+            <img src="../static/images/base-layer-map.jpg" class="img-responsive walls" alt="Responsive image">
+        </div>
+    </div>
+{% endblock %}

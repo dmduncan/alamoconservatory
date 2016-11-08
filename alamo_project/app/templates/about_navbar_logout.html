@@ -16,9 +16,9 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
     <!-- Link my CSS -->
-    <link rel="stylesheet" href="../static/css/home-2.css" >
+    <link rel="stylesheet" href="../static/css/about.css" >
     <!-- Google font -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
   </head>
   <body>
     <div class="bg">
@@ -40,31 +40,16 @@
           <ul class="nav navbar-nav navbar-left">
             <li><a href="/map">Map</a></li>
             <li><a href="/walls">Walls</a></li>
-            <li><a href="/about">About</a></li>
+            <li><a href="/about"><b>About</b> </a></li>
           </ul>
-         
+
+          {% if current_user.is_authenticated %}
           <ul class="nav navbar-nav navbar-right">
-            <form class="navbar-form" action="/login" method="post" name="login2">
-              <div class="form-group">
-                <label for="InputEmail1" style="display:block;">email address</label>
-                <input type="email" class="form-control" id="InputEmail1" name="email">
-              </div>
-              <div class="form-group">
-                <label for="InputPassword1" style="display:block;">password</label>
-                <input type="password" class="form-control" id="InputPassword1" name="password" >
-              </div>
-              <button type="submit" class="btn btn-default log-in-button more_btn" style="display: inline">Log in</button>
-            </form>
-            {% with messages = get_flashed_messages() %}
-              {% if messages %}
-                <ul>
-                  {% for message in messages %}
-                    <li>{{ message }} </li>
-                      {% endfor %}
-                </ul>
-              {% endif %}
-            {% endwith %}
+              <li><a class="welcome-msg" href="#">Welcome, {{ current_user.name }} </a></li>
+              <li><button class="btn btn-default log-out-button"> <a href="/logout">Log out</a></button></li>
           </ul>
+          {% endif %}
+
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>

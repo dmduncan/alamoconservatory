@@ -1,20 +1,21 @@
 {% if current_user.is_authenticated %}
-    {% extends "home-logged.html" %}
+    {% extends "about_navbar_logout.html" %}
 {% elif current_user.is_authenticated == False %}
-    {% extends "home.html" %}
+    {% extends "about_navbar_login.html" %}
 {% endif %}
 
 
 {% block content %}
-    <div class="container" style="padding: 50px 20px">
-
-        <h1 class="fg-white">The Alamo conservation project</h1>
-        <h2 class="fg-white">is developing technology to support digital record
+    <div class="about" style="padding: 20px 20px">
+        <h2 class="text-center" >
+            <br>The Alamo conservation project
+            <br>is developing technology to support digital record
             <br>keeping of the conservation efforts underway at
             <br>the Alamo. We are developing a Web-based conservation
             <br>management system based on the LAMP architecture
             <br>and open conservation standards,
-            <br>such as CIDOC-CRM. </h2>
+            <br>such as CIDOC-CRM.
+        </h2>
     </div>
 {% endblock %}
 

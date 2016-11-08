@@ -1,7 +1,7 @@
 {% if current_user.is_authenticated %}
-    {% extends "navbar_logout.html" %}
+    {% extends "walls_navbar_logout.html" %}
 {%  else %}
-    {% extends "navbar_login.html" %}
+    {% extends "walls_navbar_login.html" %}
 {% endif %}
 
 {% block content %}

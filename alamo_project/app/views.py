@@ -122,6 +122,6 @@ def walls():
     return render_template('walls.html')
 
 
-@app.route("/test")
-def test():
-    return render_template('test_navbar.html')
+@app.route("/map")
+def map():
+    return render_template('map.html')
