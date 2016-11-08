@@ -27,7 +27,6 @@ def images():
     return render_template('base_alamo.html',
                            title = 'Test')
 
-
 @app.route('/')
 @app.route('/index')
 @app.route('/home')
@@ -53,6 +52,9 @@ def home_logged():
 
 @app.route('/login', methods=['POST'])
 def login():
+    print('TESTING: ' + (str(request.base_url)))
+    page_requesting = request.referrer
+    print('Page requesting:' + str(page_requesting))
     print('Email: ' + (str(request.form['email'])))
     print('Password: ' + (str(request.form['password'])))
 
@@ -61,7 +63,8 @@ def login():
     user = users.find_one({'email': request.form['email']})
     if user == None:
         flash('That user does not exist')
-        return redirect(url_for('home'))
+        #return redirect(url_for('home'))
+        return redirect(page_requesting)
 
     if ((user['email'] == request.form['email']) & (user['pass'] == request.form['password'])):
 
@@ -88,13 +91,14 @@ def login():
 
 
         #return jsonify({'result': employee_info})
-        return redirect(url_for('home_logged'))
+        #return redirect(url_for('home_logged'))
+        return redirect(page_requesting)
         #return render_template('home-logged.html')
         #return redirect(url_for('home'))
 
     else:
         flash('Invalid Username or Password')
-        return redirect(url_for('home'))
+        return redirect(page_requesting)
 
     return redirect(url_for('home'))
 
@@ -103,6 +107,21 @@ def login():
 @app.route("/logout")
 def logout():
     logout_user()
-    return redirect(url_for('home'))
+    page_requesting = request.referrer
+    return redirect(page_requesting)
 
 
+
+@app.route("/about")
+def about():
+    return render_template('about.html')
+
+
+@app.route("/walls")
+def walls():
+    return render_template('walls.html')
+
+
+@app.route("/test")
+def test():
+    return render_template('test_navbar.html')

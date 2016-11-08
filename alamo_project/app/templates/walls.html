@@ -1,0 +1,74 @@
+{% if current_user.is_authenticated %}
+    {% extends "navbar_logout.html" %}
+{%  else %}
+    {% extends "navbar_login.html" %}
+{% endif %}
+
+{% block content %}
+    <script>
+    $(document).ready(function(){
+        $(".wall_container").hover(function(){
+            $(this).css("border", "solid 1px #4A90E2");
+            }, function(){
+            $(this).css("border", "solid 1px #FFF");
+        });
+    });
+    </script>
+    <link rel="stylesheet" href="../static/css/WallPage.css" >
+    <!-- Wall select -->
+    <div class="container wall_select">
+      <h2 class="text-center">Alamo Walls</h2>
+      <p>Click on a wall to select it</p>
+      <div class="row">
+          <div class=".col-sm-3 col-md-3 col-lg-3">
+              <div class="wall_container">
+                <img src="../static/images/sample-wall.JPG" class="img-responsive walls" alt="Responsive image">
+                <h4 class="text-center">Wall A</h4>
+              </div>
+          </div>
+          <div class=".col-sm-3 col-md-3 col-lg-3">
+              <div class="wall_container">
+                <img src="../static/images/sample-wall.JPG" class="img-responsive walls" alt="Responsive image">
+                <h4 class="text-center">Wall A</h4>
+              </div>
+          </div>
+          <div class=".col-sm-3 col-md-3 col-lg-3">
+              <div class="wall_container">
+                <img src="../static/images/sample-wall.JPG" class="img-responsive walls" alt="Responsive image">
+                <h4 class="text-center">Wall A</h4>
+              </div>
+          </div>
+          <div class=".col-sm-3 col-md-3 col-lg-3">
+              <div class="wall_container">
+                <img src="../static/images/sample-wall.JPG" class="img-responsive walls" alt="Responsive image">
+                <h4 class="text-center">Wall A</h4>
+              </div>
+          </div>
+          <div class=".col-sm-3 col-md-3 col-lg-3">
+              <div class="wall_container">
+                <img src="../static/images/sample-wall.JPG" class="img-responsive walls" alt="Responsive image">
+                <h4 class="text-center">Wall A</h4>
+              </div>
+          </div>
+          <div class=".col-sm-3 col-md-3 col-lg-3">
+              <div class="wall_container">
+                <img src="../static/images/sample-wall.JPG" class="img-responsive walls" alt="Responsive image">
+                <h4 class="text-center">Wall A</h4>
+              </div>
+          </div>
+          <div class=".col-sm-3 col-md-3 col-lg-3">
+              <div class="wall_container">
+                <img src="../static/images/sample-wall.JPG" class="img-responsive walls" alt="Responsive image">
+                <h4 class="text-center">Wall A</h4>
+              </div>
+          </div>
+          <div class=".col-sm-3 col-md-3 col-lg-3">
+              <div class="wall_container">
+                <img src="../static/images/sample-wall.JPG" class="img-responsive walls" alt="Responsive image">
+                <h4 class="text-center">Wall A</h4>
+              </div>
+          </div>
+
+      </div>
+    </div>
+{% endblock %}

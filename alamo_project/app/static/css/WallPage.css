@@ -1,0 +1,27 @@
+/* Alamo Walls: */
+.wall_select h2{
+	font-family: Arial;
+	font-size: 36px;
+	color: #4A4A4A;
+}
+/* Click on a wall to select it: */
+.wall_select p{
+	font-family: Arial;
+	font-size: 20px;
+	color: #4A4A4A;
+	margin-bottom: 40px;
+}
+.wall_select .wall_container{
+	background: rgba(216,216,216,0.41);
+	border: solid 1px #FFF;
+	border-radius: 8px;
+	padding: 10px 15px;
+	margin-bottom: 50px;
+	cursor: pointer;
+}
+.wall_select .wall_container h4{
+	font-family: Arial;
+	font-size: 24px;
+	color: #4A4A4A;
+	margin-bottom: 0px;
+}

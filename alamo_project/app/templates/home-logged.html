@@ -32,32 +32,28 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/">Alamo Conservation Project</a>
+          <a class="navbar-brand" href="/home">Alamo Conservation Project</a>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
           <ul class="nav navbar-nav navbar-left">
             <li><a href="#">Map</a></li>
-            <li><a href="#">Walls</a></li>
-            <li><a href="#">About</a></li>
+            <li><a href="/walls">Walls</a></li>
+            <li><a href="/about">About</a></li>
           </ul>
 
           {% if current_user.is_authenticated %}
           <ul class="nav navbar-nav navbar-right">
               <li><a class="welcome-msg" href="#">Welcome, {{ current_user.name }} </a></li>
-              <li><button class="btn btn-default log-out-button"> <a href="/logout">Log out</button></li>
+              <li><button class="btn btn-default log-out-button"> <a href="/logout">Log out</a></button></li>
           </ul>
           {% endif %}
 
         </div><!-- /.navbar-collapse -->
       </div><!-- /.container-fluid -->
     </nav>
-
-
-
+    {% block content %}{% endblock %}
     </div>
-    
-
   </body>
 </html>

@@ -1,13 +1,5 @@
-.bg{
-	height: 100vh;
-	background: url('../images/Alamo.jpg') no-repeat fixed;
-	  -webkit-background-size: cover;
-	  -moz-background-size: cover;
-	  -o-background-size: cover;
-	  background-size: cover;
-}
 .navbar-default{
-    background: rgba(215,215,215,0.25);
+    background: #4E78A0;
 	border: 1px solid #979797;
 	color: #FFFFFF;
 }
