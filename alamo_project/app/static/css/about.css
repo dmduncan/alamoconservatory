@@ -1,0 +1,109 @@
+.bg{
+	height: 100vh;
+	background: url('../images/thealamo.jpg') no-repeat fixed;
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+}
+.navbar-default{
+    background: rgba(215,215,215,0.25);
+	border: 1px solid #979797;
+	color: #FFFFFF;
+}
+.navbar {
+    border-radius: 0px;
+}
+#topnav .navbar-brand {
+	font-family: AvenirNext-Medium, 'Raleway', sans-serif;
+	font-size: 18px;
+	color: #FFFFFF;
+	padding: 8px 15px 8px 15px;
+	margin-top: 15px;
+	font-weight: bold;
+}
+#topnav ul.navbar-left li a{
+	font-family: AvenirNext-Regular,'Raleway', sans-serif;
+	font-size: 16px;
+	color: #FFFFFF;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	border-left: 3px solid #FFFFFF;
+	margin-top: 15px;
+	padding: 10px 25px;
+
+}
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #FFF;
+}
+
+nav form .form-group label{
+	font-family: AvenirNext-Regular,'Raleway', sans-serif;
+	font-size: 11px;
+	color: #FFFFFF;
+	letter-spacing: -0.12px;
+}
+nav form .form-group input.form-control{
+	background: rgba(215,215,215,0.00);
+	border: 1px solid #FFFFFF;
+	border-radius: 8px;
+	margin-right: 18px;
+	height: 25px;
+}
+#topnav form .log-in-button{
+	background: rgba(215,215,215,0.00);
+	border: 1px solid #FFFFFF;
+	border-radius: 11px;
+	color: #FFFFFF;
+	font-family: AvenirNext-Regular, 'Raleway', sans-serif;
+	font-size: 12px;
+	letter-spacing: -0.13px;
+}
+
+.more_btn{
+	width: 57px !important;
+	height: 25px !important;
+	padding: 0px 0px;
+	margin-top: 20px;
+}
+#topnav .navbar-right .log-out-button{
+	background: rgba(215,215,215,0.00);
+	border: 1px solid #FFFFFF;
+	border-radius: 11px;
+	color: #FFFFFF;
+	font-family: AvenirNext-Regular, 'Raleway', sans-serif;
+	font-size: 12px;
+	letter-spacing: -0.13px;
+	margin-top: 19px;
+}
+#topnav .navbar-right .welcome-msg{
+	font-family: AvenirNext-Regular,'Raleway', sans-serif;
+	font-size: 16px;
+	color: #FFFFFF;
+	padding-top: 8px;
+	padding-bottom: 8px;
+	margin-top: 15px;
+	padding: 10px 25px;
+}
+
+/* email_text: */
+input[type=email] {
+	font-size: 10px;
+	color: #FFFFFF;
+}
+
+input[type=password] {
+	font-size: 10px;
+	color: #FFFFFF;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.about h2{
+	font-family: Arial;
+	font-size: 36px;
+	color: #FFFFFF;
+}

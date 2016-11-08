@@ -1,0 +1,16 @@
+/* Alamo Map: */
+.wall_select h2{
+	font-family: Arial;
+	font-size: 36px;
+	color: #4A4A4A;
+}
+
+.wall_select .wall_container {
+    background: rgba(216, 216, 216, 0.41);
+    border: solid 1px #FFF;
+    border-radius: 8px;
+    padding: 10px 15px;
+    margin-bottom: 50px;
+    cursor: pointer;
+}
+
