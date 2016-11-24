@@ -1,0 +1,225 @@
+body{
+	font-family: Arial;
+}
+label {
+    font-weight: 400;
+    font-size: 15px;
+}
+/* Title WALL A: */
+.mainbody h2{
+	font-family: Arial;
+	font-size: 36px;
+	color: #4A4A4A;
+	margin-bottom: 40px;
+}
+/* < Left Wall, Right Wall >: */
+.mainbody h2 span{
+	font-family: Arial;
+	font-size: 20px;
+	color: #4A4A4A;
+	margin-right: 20px;
+	margin-left: 20px;
+}
+/* tab nav: Add Detail, View Detail, Search Wall*/
+.mainbody .nav-pills a{
+	font-family: Arial;
+	font-size: 15px;
+	color: rgba(73,73,73,0.51);
+	text-align: center;
+	border-radius: 0px;
+	border: 1px solid #D9D9D9;;
+	padding-top: 5px;
+	padding-bottom: 3px;
+
+}
+.mainbody .nav-pills a i{
+	display: block; 
+	font-size: 25px;
+}
+.mainbody .nav-pills > li.active > a, .nav-pills > li.active > a:focus, .nav-pills > li.active > a:hover {
+    color: #60AFFE;
+    border-bottom: 2px solid #60AFFE;
+    background-color: #FFF;
+}
+/*Search By:*/
+.mainbody .tab-content {
+	margin-bottom: 80px;
+}
+.mainbody .tab-content .tab-pane h3{
+	padding: 15px 3%;
+	font-size: 21px;
+	color: #4A4A4A;
+}
+/* Collapse Pane Title: Type, Actor, Recorded Date, etc.*/
+.mainbody .tab-content .tab-pane h4{
+	font-size: 18px;
+	color: #4A4A4A;
+	
+}
+/* Toggle Down angle down arrow*/
+.mainbody .tab-content .tab-pane h4 a{
+	display: inline-block;
+	float: right;
+	font-size: 28px;
+	margin-top: -8px;
+	padding-top: 0px;
+	color: #60AFFE;
+	overflow: hidden;
+	clear: both;
+}
+/*Collapsible Panels under SEARCH BY: Type/Actor/Recorded Date*/
+/* First panel - Type:*/
+.mainbody .tab-content .tab-pane .panel_wrap1{
+	padding: 12px 6%;
+	border-top: 1px solid #D9D9D9;
+	border-bottom: 1px solid #D9D9D9;
+}
+/* Other panels - except the first one 'Type':*/
+.mainbody .tab-content .tab-pane .panel_wrap{
+	padding: 12px 6%;
+	border-bottom: 1px solid #D9D9D9;
+}
+/*checkboxes under Type panel*/
+.mainbody #searchWall #type input[type="checkbox"]{
+	display: none;
+}
+.mainbody #searchWall #type input[type="checkbox"] + label{
+	font-family: Arial;
+	font-weight: 400;
+	cursor:pointer;
+	font-size: 15px;
+	color: #4A4A4A;
+}
+/* use pseudo-element :before to insert pseudo content “tick √” inside <span> */
+/*not checked:*/
+.mainbody #searchWall #type input[type="checkbox"] + label > span.mycheckbox::before{
+	content: ""; /*MUST HAVE THIS LINE to make the checkbox square appear otherwise the square won't display */
+	display:inline-block;
+    width:17px;
+    height:17px;
+    border-radius: 4px;
+    margin:4px;
+    vertical-align:middle;
+    border: 1px solid #D9D9D9;
+}
+/* After Checked insert pseudo content “tick √” inside <span> :*/
+.mainbody #searchWall #type input[type=checkbox]:checked + label > span.mycheckbox::before {
+  content: "\2713";
+  font-size: 14px;
+  color: #0A7BFF;
+  text-align: center;
+  font-weight: 800;
+}
+.mainbody #searchWall #type #wood + label span.icon{
+	display:inline-block;
+	vertical-align: middle;
+	width: 16px;
+	height: 16px;
+	border: 1px solid #D9D9D9;
+	border-radius: 8px;
+	margin-left: 5px;
+}
+.mainbody #searchWall #type #green + label span.icon{
+	display:inline-block;
+	vertical-align: middle;
+	width: 16px;
+	height: 16px;
+	background-color: #7ED321;
+	border-radius: 8px;
+}
+.mainbody #searchWall .btn_search{
+	margin: 25px auto;
+	display: block;
+	background: #E14454;
+	border-radius: 30px;
+	font-size: 14px;
+	color: #FFFFFF;
+	padding: 12px 30px;
+}
+
+.mainbody #addDetail #add_type_dropdown{
+	color: #333;
+	width: 100%;
+	margin-top: 6px;
+}
+.mainbody #addDetail #add_type_dropdown a.dropdown-toggle{
+	background: none;
+    border: solid 1px #D3D3D3;
+    border-radius: 0px;
+    width: 100%;
+    text-align: left;
+    cursor: pointer;
+    font-size: 15px;
+	color: #60AFFE;
+}
+.mainbody #addDetail #add_type_dropdown a.dropdown-toggle span.drop_icon{
+	display: inline-block;
+	float: right;
+	font-size: 18px;
+	margin-top: -20px;
+	color: #60AFFE;
+	overflow: hidden;
+	clear: both;
+}
+/*The example shape/type icon of notes e.g. wood, incised lines, etc.*/
+.mainbody #addDetail div#add_type_dropdown span.type_icon{
+	
+	width: 20px;
+	height: 20px;
+	margin-right: 6px;
+	display: inline-block;
+	vertical-align: middle;
+}
+.mainbody #addDetail div#add_type_dropdown span.type_text{
+	vertical-align: middle;
+}
+.mainbody #addDetail div#add_type_dropdown ul li{
+	cursor: pointer;
+}
+.mainbody #addDetail div#add_type_dropdown ul{
+	width: 100%;
+}
+.mainbody #addDetail div#add_type_dropdown span#Wood_Icon{
+	background: url('../images/Wood_Icon.png');
+}
+.mainbody #addDetail div#add_type_dropdown span#Incised_Lines_Icon{
+	background: url('../images/Incised_Lines_Icon.png');
+}
+.mainbody #addDetail div#add_type_dropdown span#Army_Grafetti_Icon{
+	background: url('../images/Army_Grafetti_Icon.png');
+}
+.mainbody #addDetail div#add_type_dropdown span#Efflorescence_Icon{
+	background: url('../images/Efflorescence_Icon.png');
+}
+.mainbody #addDetail div#add_type_dropdown span#Nail_Icon{
+	background: url('../images/Nail_Icon.png');
+}
+.mainbody #addDetail #btn_add_detail{
+	margin-top: 20px;
+	background: #E14454;
+	border-radius: 30px;
+	font-size: 14px;
+	color: #FFFFFF;
+	padding: 12px 30px;
+}
+.mainbody #addDetail #btn_cancel_detail{
+	margin-top: 20px;
+	background: #BD6C6C;
+	border-radius: 30px;
+	font-size: 14px;
+	color: #FFFFFF;
+	padding: 12px 30px;
+}
+.mainbody #addDetail #add_record{
+	margin-top: 18px;
+}
+.mainbody #addDetail #add_record label{
+	font-size: 15px;
+	padding-top: 5px;
+	margin-bottom: 20px;
+	
+}
+.mainbody #addDetail #add_record .form-control{
+	height: 32px;
+	
+}

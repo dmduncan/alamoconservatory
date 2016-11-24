@@ -103,7 +103,8 @@ a {
 }
 
 .about h2{
-	font-family: Arial;
+	font-family: AvenirNext-Regular,'Raleway', sans-serif;
 	font-size: 36px;
 	color: #FFFFFF;
+    padding: 100px 20px;
 }

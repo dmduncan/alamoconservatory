@@ -125,3 +125,7 @@ def walls():
 @app.route("/map")
 def map():
     return render_template('map.html')
+
+@app.route("/wall_a")
+def wall_a():
+    return render_template('search_wall_TESTING.html')
