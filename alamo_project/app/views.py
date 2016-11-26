@@ -1,11 +1,10 @@
 from flask import render_template, flash, redirect, url_for, session, request, g
 from flask.ext.login import login_user, logout_user, current_user
 from app import app, mongo, lm
-#from .forms import LoginForm
-from flask import jsonify
 from datetime import datetime
 from .models import User
 from bson.objectid import ObjectId
+from flask import json
 
 
 # this sets the callback for reloading a user from the session
@@ -21,11 +20,6 @@ def load_user(id):
     return User(user['_id'], (user['first_name'] + ' ' + user['last_name']))
 
 
-
-@app.route('/base')
-def images():
-    return render_template('base_alamo.html',
-                           title = 'Test')
 
 @app.route('/')
 @app.route('/index')
@@ -126,6 +120,44 @@ def walls():
 def map():
     return render_template('map.html')
 
-@app.route("/wall_a")
-def wall_a():
-    return render_template('search_wall_TESTING.html')
+# created custom route in flask app so that it could handle all walls.
+@app.route("/<wall_letter>")
+def wall(wall_letter):
+    # create list to store all of the  Openlayers 3 layers in the database that pertain to the specific wall
+    layers = []
+    # retrieve the collection for the specified wall
+    collection = mongo.db[wall_letter]
+    # if the collection contains no documents (drawing layers made from OpenLayers 3) then return an empty list
+    if(collection.count() == 0):
+        return layers
+    # find all documents in the wall collection and put them into a list to give to the front end
+    documents = collection.find({})
+    for document in documents:
+        layers.append(document)
+
+    # this was implemented so that once other walls are added, it could
+    # dynamically render the correct wall html based on the wall specified
+    return render_template(wall_letter + '.html', layers=layers)
+
+# adding a detail to the wall
+@app.route("/wall_form", methods=['POST'])
+def wall_form():
+    # save the page requesting to return back to it
+    page_requesting = request.referrer
+    print(page_requesting)
+    # pull the end of the request referrer url to get the corresponding wall letter
+    wall_letter = page_requesting.split('/')[-1]
+
+    # pull the json content
+    content = request.json
+
+    # test printing
+    print(content)
+    print(json.dumps(content, sort_keys = True, indent = 4, separators = (',', ': ')))
+
+    # pulling mongoDB wall collection
+    wall = mongo.db[wall_letter]
+    wall.insert_one(content)
+
+    # return to the page that performed the request
+    return redirect(page_requesting)

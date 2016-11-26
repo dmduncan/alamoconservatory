@@ -1,20 +1,13 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Search Wall - Alamo Conservation</title>
+{% if current_user.is_authenticated %}
+    {% extends "walls_navbar_logout.html" %}
+{%  else %}
+    {% extends "walls_navbar_login.html" %}
+{% endif %}
 
-    <!-- Bootstrap -->
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    <!-- OpenLayers 3 -->
+{% block content %}
+
+
+     <!-- OpenLayers 3 -->
     <link rel="stylesheet" href="https://openlayers.org/en/v3.19.1/css/ol.css" type="text/css">
     <!-- Date Picker -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css" />
@@ -28,61 +21,20 @@
     </style>
     <script src="https://openlayers.org/en/v3.19.1/build/ol.js" type="text/javascript"></script>
 
-    <!-- Link my CSS -->
-    <link rel="stylesheet" href="../static/css/navbar-blue.css" >
+      <!-- Link my CSS -->
     <link rel="stylesheet" href="../static/css/SearchWall.css" >
-    <!-- Google font -->
-    <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
     <!-- font awesome -->
     <script src="https://use.fontawesome.com/fdbc341dab.js"></script>
 
-  </head>
-  <body>
-    <!-- navbar -->
-    <nav id="topnav" class="navbar navbar-my navbar-default">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Alamo Conservation Project</a>
-        </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav navbar-left">
-            <li><a href="#">Map</a></li>
-            <li><a href="#"><b>Walls</b> </a></li>
-            <li><a href="#">About</a></li>
-          </ul>
 
-          <ul class="nav navbar-nav navbar-right">
-            <form class="navbar-form">
-              <div class="form-group">
-                <label for="InputEmail1" style="display:block;">Email address</label>
-                <input type="email" class="form-control" id="InputEmail1">
-              </div>
-              <div class="form-group">
-                <label for="InputPassword1" style="display:block;">Password</label>
-                <input type="password" class="form-control" id="InputPassword1" >
-              </div>
-              <button type="submit" class="btn btn-default log-in-button">Log in</button>
-            </form>
-          </ul>
-        </div><!-- /.navbar-collapse -->
-      </div><!-- /.container-fluid -->
-    </nav>
     <script type="text/javascript">
       $(".dropdown-menu li a").click(function(){
           var selText = $(this).children().clone();
           $(this).parents('.btn-group').find('.dropdown-toggle').html(selText).append('<span class="caret"></span>');
         });
     </script>
-    
+
 
     <!-- Wall select -->
     <div class="container mainbody">
@@ -122,15 +74,15 @@
                     </div>
                     </div>
                   </div>
-                  
+
                 </div>
 
                 <div class="panel_wrap">
-                  <h4><strong>Draw Point on Image to Select Wall Area</strong>  </h4>   
+                  <h4><strong>Draw Point on Image to Select Wall Area</strong>  </h4>
                 </div>
 
                 <div class="panel_wrap">
-                  <h4>Record Date                  
+                  <h4>Record Date
                   <a data-toggle="collapse" href="#add_record" aria-expanded="false" aria-controls="recorded_date">
                   <span class="toggle-icon glyphicon glyphicon-menu-up" aria-hidden="true"></span>
                   </a></h4>
@@ -161,12 +113,12 @@
                         </div>
                       </div>
                     </div>
-                    
-                  
+
+
                   </div>
                 </div>
                 <div class="panel_wrap">
-                  <h4>Add Files                
+                  <h4>Add Files
                   <a data-toggle="collapse" href="#add_files" aria-expanded="false" aria-controls="recorded_date">
                   <span class="toggle-icon glyphicon glyphicon-menu-up" aria-hidden="true"></span>
                   </a></h4>
@@ -175,12 +127,12 @@
                   </div>
                 </div>
                 <div class="panel_wrap">
-                  <h4>Notes                 
+                  <h4>Notes
                   <a data-toggle="collapse" href="#add_notes" aria-expanded="false" aria-controls="recorded_date">
                   <span class="toggle-icon glyphicon glyphicon-menu-up" aria-hidden="true"></span>
                   </a></h4>
                   <div class="collapse in" id="add_notes">
-                    <textarea id="input_add_notes" rows="4" cols="70"></textarea> 
+                    <textarea id="input_add_notes" rows="4" cols="70"></textarea>
                   </div>
                 </div>
                 <div class="text-center">
@@ -192,7 +144,7 @@
               <div role="tabpanel" class="tab-pane active" id="searchWall">
                 <h3>SEARCH BY:</h3>
                 <div class="panel_wrap1">
-                  <h4>Type                  
+                  <h4>Type
                   <a data-toggle="collapse" href="#type" aria-expanded="true" aria-controls="type">
                   <span class="toggle-icon glyphicon glyphicon-menu-down" aria-hidden="true"></span></a>
                   </h4>
@@ -211,7 +163,7 @@
                           <input type="checkbox" id="green" name="green" />
                           <label for="green"><span class="mycheckbox"></span> Green Pigment <span class="icon"></span></label>
                         </div>
-                                                
+
 
                       </div>
                       <div class="col-md-6 col-lg-6">
@@ -220,13 +172,13 @@
                           <label for="army"><span class="mycheckbox"></span>Army Graffiti <span class="icon"></span></label>
                         </div>
                       </div>
-                      
+
                     </div>
-                    
+
                   </div>
                 </div>
                 <div class="panel_wrap">
-                  <h4>Actor                  
+                  <h4>Actor
                   <a data-toggle="collapse" href="#actor" aria-expanded="false" aria-controls="actor">
                   <span class="toggle-icon glyphicon glyphicon-menu-up" aria-hidden="true"></span>
                   </a></h4>
@@ -235,7 +187,7 @@
                   </div>
                 </div>
                 <div class="panel_wrap">
-                  <h4>Recorded Date                  
+                  <h4>Recorded Date
                   <a data-toggle="collapse" href="#recorded_date" aria-expanded="false" aria-controls="recorded_date">
                   <span class="toggle-icon glyphicon glyphicon-menu-up" aria-hidden="true"></span>
                   </a></h4>
@@ -244,7 +196,7 @@
                   </div>
                 </div>
                 <div class="panel_wrap">
-                  <h4>Discovered Date                  
+                  <h4>Discovered Date
                   <a data-toggle="collapse" href="#discovered" aria-expanded="false" aria-controls="recorded_date">
                   <span class="toggle-icon glyphicon glyphicon-menu-up" aria-hidden="true"></span>
                   </a></h4>
@@ -253,7 +205,7 @@
                   </div>
                 </div>
                 <div class="panel_wrap">
-                  <h4>Origination Date                  
+                  <h4>Origination Date
                   <a data-toggle="collapse" href="#origination" aria-expanded="false" aria-controls="recorded_date">
                   <span class="toggle-icon glyphicon glyphicon-menu-up" aria-hidden="true"></span>
                   </a></h4>
@@ -261,7 +213,7 @@
                     <input type="checkbox">
                   </div>
                 </div>
-                
+
                 <button class="btn btn_search">Search</button>
               </div>
 
@@ -282,10 +234,10 @@
         </form>
           <div id="map" class="map"></div>
           <div id="map2" class="map"></div>
-          
+
         </div>
       </div>
-      
+
       <script type="text/javascript">
       /*Draw features*/
         var extent = [0, 0, 387, 548];
@@ -293,7 +245,7 @@
           code: 'xkcd-image',
           units: 'pixels',
           extent: extent
-        });  
+        });
         var raster = new ol.layer.Image({
               source: new ol.source.ImageStatic({
                 attributions: '© <a href="http://xkcd.com/license.html">xkcd</a>',
@@ -308,7 +260,7 @@
           wrapX: false,
           features: (new ol.format.GeoJSON()).readFeatures(geojsonObject)});
         var newsource = new ol.source.Vector({wrapX: false});
-        //existing features/geometries on map 
+        //existing features/geometries on map
         var newfeature = new ol.Feature({
           geometry: new ol.geom.Point([ 247.5859021060188, 349.58634774805404 ]),
           name: 'My Polygon'
@@ -357,9 +309,9 @@
           map.removeInteraction(draw);
           addInteraction();
         };
-        addInteraction();     
+        addInteraction();
 
-        /*Add Wall Detail button onclick send json to console*/ 
+        /*Add Wall Detail button onclick send json to console*/
         $("#btn_add_detail").click(function(){
 
           var type_text = $("#selected_type").children("span.type_text").text() ;
@@ -377,7 +329,15 @@
           ff[0].setProperties(mytype);
           var geojson = format.writeFeatures(ff);//this is the output geojson for backend
           console.log(geojson);
-          flask.json
+          $.ajax({
+              type: 'POST',
+              contentType: 'application/json',
+              url: '/wall_form',
+              data: geojson, // or JSON.stringify ({name: 'jonas'}),
+              success: location.reload(true),
+              dataType: 'json'
+
+          });
         });
 
         /*draw end listener*/
@@ -400,7 +360,7 @@
 
           img.onload = function(){
             var pattern = ctx.createPattern(img, 'repeat');
-            
+
             feature.setStyle(new ol.style.Style({
               stroke: new ol.style.Stroke({
                 color: '#0C0302',
@@ -427,9 +387,9 @@
     </div>
 
 
+{% for layer in layers %}
+   <li>{{ layer }}</li>
+{% endfor %}
 
 
-    
-
-  </body>
-</html>
+{% endblock %}
