@@ -1,10 +1,11 @@
-from flask import render_template, flash, redirect, url_for, session, request, g
+from flask import render_template, flash, redirect, url_for, session, request
 from flask.ext.login import login_user, logout_user, current_user
 from app import app, mongo, lm
 from datetime import datetime
 from .models import User
 from bson.objectid import ObjectId
-from flask import json
+import json
+
 
 
 # this sets the callback for reloading a user from the session
@@ -120,8 +121,16 @@ def walls():
 def map():
     return render_template('map.html')
 
+
+class JSONEncoder(json.JSONEncoder):
+    def default(self, o):
+        if isinstance(o, ObjectId):
+            return str(o)
+        return json.JSONEncoder.default(self, o)
+
+
 # created custom route in flask app so that it could handle all walls.
-@app.route("/<wall_letter>")
+@app.route("/walls/<wall_letter>")
 def wall(wall_letter):
     # create list to store all of the  Openlayers 3 layers in the database that pertain to the specific wall
     layers = []
@@ -133,11 +142,14 @@ def wall(wall_letter):
     # find all documents in the wall collection and put them into a list to give to the front end
     documents = collection.find({})
     for document in documents:
-        layers.append(document)
+        json_document = JSONEncoder().encode(document)
+        layers.append(json_document)
+
 
     # this was implemented so that once other walls are added, it could
     # dynamically render the correct wall html based on the wall specified
     return render_template(wall_letter + '.html', layers=layers)
+    #return render_template('wall_a-new.html')
 
 # adding a detail to the wall
 @app.route("/wall_form", methods=['POST'])
