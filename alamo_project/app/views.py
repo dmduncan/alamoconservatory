@@ -21,7 +21,6 @@ def load_user(id):
     return User(user['_id'], (user['first_name'] + ' ' + user['last_name']))
 
 
-
 @app.route('/')
 @app.route('/index')
 @app.route('/home')
@@ -122,6 +121,7 @@ def map():
     return render_template('map.html')
 
 
+# created custom JSON encoder to handle and serialize the mongoDB ObjectIDs
 class JSONEncoder(json.JSONEncoder):
     def default(self, o):
         if isinstance(o, ObjectId):
@@ -149,7 +149,7 @@ def wall(wall_letter):
     # this was implemented so that once other walls are added, it could
     # dynamically render the correct wall html based on the wall specified
     return render_template(wall_letter + '.html', layers=layers)
-    #return render_template('wall_a-new.html')
+    #return render_template('wall_a_new.html')
 
 # adding a detail to the wall
 @app.route("/wall_form", methods=['POST'])

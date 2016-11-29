@@ -5,9 +5,7 @@
 {% endif %}
 
 {% block content %}
-
-
-     <!-- OpenLayers 3 -->
+    <!-- OpenLayers 3 -->
     <link rel="stylesheet" href="https://openlayers.org/en/v3.19.1/css/ol.css" type="text/css">
     <!-- Date Picker -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.6.4/css/bootstrap-datepicker.min.css" />
@@ -26,16 +24,7 @@
     <!-- font awesome -->
     <script src="https://use.fontawesome.com/fdbc341dab.js"></script>
 
-
-
-    <script type="text/javascript">
-      $(".dropdown-menu li a").click(function(){
-          var selText = $(this).children().clone();
-          $(this).parents('.btn-group').find('.dropdown-toggle').html(selText).append('<span class="caret"></span>');
-        });
-    </script>
-
-
+    
     <!-- Wall select -->
     <div class="container mainbody">
       <h2 class="text-center"><span>< Left Wall</span> WALL A <span>Right Wall ></span></h2>
@@ -43,7 +32,7 @@
         <div class="col-md-6 col-lg-6">
             <!-- Nav tabs: Add Detail/View Detail/Search Wall-->
             <ul class="nav nav-pills nav-justified" role="tablist">
-              <li role="presentation" ><a href="#addDetail" aria-controls="addDetail" role="tab" data-toggle="tab">
+              <li id="addDetail_li" role="presentation" ><a href="#addDetail" aria-controls="addDetail" role="tab" data-toggle="tab">
               <i class="fa fa-plus" aria-hidden="true"></i>Add Detail</a></li>
               <li role="presentation"><a href="#viewDetail" aria-controls="viewDetail" role="tab" data-toggle="tab">
               <i class="fa fa-file-text-o" aria-hidden="true"></i>View Detail</a></li>
@@ -67,22 +56,28 @@
                       <ul class="dropdown-menu">
                         <li><a><span class="type_icon" id="Wood_Icon"></span> <span class="type_text">Wood</span> </a></li>
                         <li><a><span class="type_icon" id="Incised_Lines_Icon"></span> <span class="type_text">Incised Lines</span> </a></li>
-                        <li><a><span class="type_icon" id="Army_Grafetti_Icon"></span> <span class="type_text">Army Grafetti </span> </a></li>
+                        <li><a><span class="type_icon" id="Army_Grafetti_Icon"></span> <span class="type_text">Army Grafetti</span> </a></li>
                         <li><a><span class="type_icon" id="Efflorescence_Icon"></span> <span class="type_text">Efflorescence</span> </a></li>
                         <li><a><span class="type_icon" id="Nail_Icon"></span> <span class="type_text">Nail</span> </a></li>
+                        <li><a><span style="background: url('../static/images/Green_Pigment_Icon.png');width: 18px;height: 18px;" class="type_icon" id="Green_Pigment_Icon"></span> <span class="type_text">Green Pigment</span> </a></li>
+                        <li><a><span style="background: url('../static/images/Yellow_Pigment_Icon.png');width: 18px;height: 18px;" class="type_icon" id="Yellow_Pigment_Icon"></span> <span class="type_text">Yellow Pigment</span> </a></li>
+                        <li><a><span style="background: url('../static/images/Red_Pigment_Icon.png');width: 18px;height: 18px;" class="type_icon" id="Red_Pigment_Icon"></span> <span class="type_text">Red Pigment</span> </a></li>
+                        <li><a><span style="background: url('../static/images/Black_Pigment_Icon.png');width: 18px;height: 18px;" class="type_icon" id="Black_Pigment_Icon"></span> <span class="type_text">Black Pigment</span> </a></li> 
+                        <li><a><span style="background: url('../static/images/Blue_Pigment_Icon.png');width: 18px;height: 18px;" class="type_icon" id="Blue_Pigment_Icon"></span> <span class="type_text">Blue Pigment</span> </a></li>
+                         
                       </ul>
                     </div>
                     </div>
                   </div>
-
+                  
                 </div>
 
                 <div class="panel_wrap">
-                  <h4><strong>Draw Point on Image to Select Wall Area</strong>  </h4>
+                  <h4><strong>Draw Point on Image to Select Wall Area</strong>  </h4>   
                 </div>
 
                 <div class="panel_wrap">
-                  <h4>Record Date
+                  <h4>Record Date                  
                   <a data-toggle="collapse" href="#add_record" aria-expanded="false" aria-controls="recorded_date">
                   <span class="toggle-icon glyphicon glyphicon-menu-up" aria-hidden="true"></span>
                   </a></h4>
@@ -113,12 +108,12 @@
                         </div>
                       </div>
                     </div>
-
-
+                    
+                  
                   </div>
                 </div>
                 <div class="panel_wrap">
-                  <h4>Add Files
+                  <h4>Add Files                
                   <a data-toggle="collapse" href="#add_files" aria-expanded="false" aria-controls="recorded_date">
                   <span class="toggle-icon glyphicon glyphicon-menu-up" aria-hidden="true"></span>
                   </a></h4>
@@ -127,12 +122,12 @@
                   </div>
                 </div>
                 <div class="panel_wrap">
-                  <h4>Notes
+                  <h4>Notes                 
                   <a data-toggle="collapse" href="#add_notes" aria-expanded="false" aria-controls="recorded_date">
                   <span class="toggle-icon glyphicon glyphicon-menu-up" aria-hidden="true"></span>
                   </a></h4>
                   <div class="collapse in" id="add_notes">
-                    <textarea id="input_add_notes" rows="4" cols="70"></textarea>
+                    <textarea id="input_add_notes" rows="4" cols="70"></textarea> 
                   </div>
                 </div>
                 <div class="text-center">
@@ -144,41 +139,64 @@
               <div role="tabpanel" class="tab-pane active" id="searchWall">
                 <h3>SEARCH BY:</h3>
                 <div class="panel_wrap1">
-                  <h4>Type
+                  <h4>Type                  
                   <a data-toggle="collapse" href="#type" aria-expanded="true" aria-controls="type">
                   <span class="toggle-icon glyphicon glyphicon-menu-down" aria-hidden="true"></span></a>
                   </h4>
+
                   <div class="collapse in" id="type">
                     <div class="row">
-                      <div class="col-md-6 col-lg-6">
+                      <div class="col-md-6 col-lg-6 checkboxdiv">
                         <div class="checkboxes">
-                          <input type="checkbox" id="wood" name="wood" />
-                          <label for="wood"><span class="mycheckbox"></span>Wood<span class="icon"></span></label>
+                          <input type="checkbox" id="wood" name="Wood" />
+                          <label for="wood"><span class="mycheckbox"></span>Wood<span class="icon" style="background: url('../static/images/Wood_Icon.png');width: 20px;height: 20px;"></span></label>
                         </div>
                         <div class="checkboxes">
-                          <input type="checkbox" id="incised" name="green" />
-                          <label for="incised"><span class="mycheckbox"></span> Incised Lines<span class="icon"></span></label>
+                          <input type="checkbox" id="incised" name="Incised Lines" />
+                          <label for="incised"><span class="mycheckbox"></span> Incised Lines<span class="icon" style="background: url('../static/images/Incised_Lines_Icon.png');width: 20px;height: 20px;"></span></label>
                         </div>
                         <div class="checkboxes">
-                          <input type="checkbox" id="green" name="green" />
-                          <label for="green"><span class="mycheckbox"></span> Green Pigment <span class="icon"></span></label>
+                          <input type="checkbox" id="green" name="Green Pigment" />
+                          <label for="green"><span class="mycheckbox"></span> Green Pigment<span class="icon" style="background: url('../static/images/Green_Pigment_Icon.png');width: 18px;height: 18px;"></span></label>
                         </div>
-
-
+                        <div class="checkboxes">
+                          <input type="checkbox" id="yellow" name="Yellow Pigment" />
+                          <label for="yellow"><span class="mycheckbox"></span> Yellow Pigment<span class="icon" style="background: url('../static/images/Yellow_Pigment_Icon.png');width: 18px;height: 18px;"></span></label>
+                        </div>     
+                        <div class="checkboxes">
+                          <input type="checkbox" id="red" name="Red Pigment" />
+                          <label for="red"><span class="mycheckbox"></span> Red Pigment<span class="icon" style="background: url('../static/images/Red_Pigment_Icon.png');width: 18px;height: 18px;"></span></label>
+                        </div>    
                       </div>
-                      <div class="col-md-6 col-lg-6">
+                      <div class="col-md-6 col-lg-6 checkboxdiv">
                         <div class="checkboxes">
-                          <input type="checkbox" id="army" name="green" />
-                          <label for="army"><span class="mycheckbox"></span>Army Graffiti <span class="icon"></span></label>
+                          <input type="checkbox" id="army" name="Army Grafetti" />
+                          <label for="army"><span class="mycheckbox"></span>Army Grafetti<span class="icon" class="icon" style="background: url('../static/images/Army_Grafetti_Icon.png');width: 20px;height: 20px;"></span></label>
                         </div>
+                        <div class="checkboxes">
+                          <input type="checkbox" id="Efflorescence" name="Efflorescence" />
+                          <label for="Efflorescence"><span class="mycheckbox"></span>Efflorescence<span class="icon" style="background: url('../static/images/Efflorescence_Icon.png');width: 20px;height: 20px;"></span></label>
+                        </div>
+                        <div class="checkboxes">
+                          <input type="checkbox" id="Nail" name="Nail" />
+                          <label for="Nail"><span class="mycheckbox"></span>Nail<span class="icon" style="background: url('../static/images/Nail_Icon.png');width: 20px;height: 20px;"></span></label>
+                        </div>
+                        <div class="checkboxes">
+                          <input type="checkbox" id="blue" name="Blue Pigment" />
+                          <label for="blue"><span class="mycheckbox"></span> Blue Pigment<span class="icon" style="background: url('../static/images/Blue_Pigment_Icon.png');width: 18px;height: 18px;"></span></label>
+                        </div>    
+                        <div class="checkboxes">
+                          <input type="checkbox" id="black" name="Black Pigment" />
+                          <label for="black"><span class="mycheckbox"></span> Black Pigment<span class="icon" style="background: url('../static/images/Black_Pigment_Icon.png');width: 18px;height: 18px;"></span></label>
+                        </div>    
                       </div>
-
+                      
                     </div>
-
+                    
                   </div>
                 </div>
                 <div class="panel_wrap">
-                  <h4>Actor
+                  <h4>Actor                  
                   <a data-toggle="collapse" href="#actor" aria-expanded="false" aria-controls="actor">
                   <span class="toggle-icon glyphicon glyphicon-menu-up" aria-hidden="true"></span>
                   </a></h4>
@@ -187,16 +205,20 @@
                   </div>
                 </div>
                 <div class="panel_wrap">
-                  <h4>Recorded Date
+                  <h4>Recorded Date                  
                   <a data-toggle="collapse" href="#recorded_date" aria-expanded="false" aria-controls="recorded_date">
                   <span class="toggle-icon glyphicon glyphicon-menu-up" aria-hidden="true"></span>
                   </a></h4>
                   <div class="collapse" id="recorded_date">
-                    <p>rec</p>
+                    <div class="input-group input-daterange">
+                        <input type="text" class="form-control" value="2012-04-05">
+                        <span class="input-group-addon">to</span>
+                        <input type="text" class="form-control" value="2012-04-19">
+                    </div>
                   </div>
                 </div>
                 <div class="panel_wrap">
-                  <h4>Discovered Date
+                  <h4>Discovered Date                  
                   <a data-toggle="collapse" href="#discovered" aria-expanded="false" aria-controls="recorded_date">
                   <span class="toggle-icon glyphicon glyphicon-menu-up" aria-hidden="true"></span>
                   </a></h4>
@@ -205,7 +227,7 @@
                   </div>
                 </div>
                 <div class="panel_wrap">
-                  <h4>Origination Date
+                  <h4>Origination Date                  
                   <a data-toggle="collapse" href="#origination" aria-expanded="false" aria-controls="recorded_date">
                   <span class="toggle-icon glyphicon glyphicon-menu-up" aria-hidden="true"></span>
                   </a></h4>
@@ -213,39 +235,71 @@
                     <input type="checkbox">
                   </div>
                 </div>
-
-                <button class="btn btn_search">Search</button>
+                
+                <button class="btn btn_search" id="btn_search_by">Search</button>
               </div>
 
             </div>
 
         </div>
         <div class="col-md-6 col-lg-6">
-          <div class="test"></div>
-          <form class="form-inline">
-          <label>Geometry type &nbsp;</label>
-          <select id="shape">
-<!--             <option value="Point">Point</option>
-            <option value="LineString">LineString</option> -->
-            <option value="Polygon">Polygon</option>
-<!--             <option value="Circle">Circle</option>
-            <option value="None">None</option> -->
-          </select>
-        </form>
+          <div class="select_delete_btn_group">
+            <button type="button" id="select_feature" class="btn btn-danger">Select Drawn Features to Delete</button>
+            <button class="hidden btn btn-danger" id="delete_selected_feature" >Delete Selected Feature</button>
+          </div>
+          
           <div id="map" class="map"></div>
-          <div id="map2" class="map"></div>
-
         </div>
       </div>
-
+      
       <script type="text/javascript">
+      /*add icon css to checkboxes*/
+      $('.checkboxes span.icon').css({
+        "display": "inline-block",
+        "vertical-align": "middle",
+        "margin-left": "5px"});
+      $('#type #wood + label span.icon').css("border","none");
+
+      var typeSelect = "Point"; //The selected Type of pattern to draw with (Make it global so it could be used by different functions)
+      var type_icon = $("#selected_type").children("span.type_icon").attr('id');//The icon name of the selected Type of pattern to draw with (Make it global so it could be used by different functions)
+      /*Collapse Panel Group Under 'Search By' - Control changing of toggle icon (arrow down/up) on the right side*/
+        $('a[data-toggle="collapse"]').click(function () {
+          $(this).find('span.toggle-icon').toggleClass('glyphicon-menu-up glyphicon-menu-down');
+        });
+        /*Turn a Bootstrap dropdown menu into a select list with Bootstrap 3 and jQuery. */
+        $(".dropdown-menu li a").click(function(){
+          var selText = $(this).children().clone();
+          $(this).parents('.btn-group').find('.dropdown-toggle').html(selText).append('<span class="drop_icon glyphicon glyphicon-menu-down"></span>');
+          /*change to the current type icon name so the filling style could be changed in future functions*/
+          type_icon = $("#selected_type").children("span.type_icon").attr('id');
+          setNewVectorStyle(type_icon);
+          //console.log(type_icon);
+          /*decide to use Point/Polygon when change type of pattern in dropdown*/
+          var type_text = $("#selected_type").children("span.type_text").text() ;
+          //console.log(type_text);
+          if (type_text == "Efflorescence") {typeSelect = "Polygon";console.log(typeSelect);}
+          else {typeSelect = "Point";console.log(typeSelect);}
+          /**
+           * Handle change event.
+           */
+          map.removeInteraction(draw);
+
+         // function addInteraction() {
+            draw = new ol.interaction.Draw({
+              source: newsource,
+              type: typeSelect
+            });
+            map.addInteraction(draw);
+          //}
+        });
+
       /*Draw features*/
         var extent = [0, 0, 387, 548];
         var projection = new ol.proj.Projection({
           code: 'xkcd-image',
           units: 'pixels',
           extent: extent
-        });
+        });  
         var raster = new ol.layer.Image({
               source: new ol.source.ImageStatic({
                 attributions: '© <a href="http://xkcd.com/license.html">xkcd</a>',
@@ -254,28 +308,131 @@
                 imageExtent: extent
               })
             });
-      var geojsonObject = {"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[117.68621969223021,410.054559469223],[83.43621969223021,373.663934469223],[162.63934469223022,388.648309469223],[117.68621969223021,410.054559469223]]]},"properties":{"notes":"fdssf","origination_date":"11/08/2016","discovered_on":"02/09/1960","pattern":"Wood"}},{"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[175.48309469223022,305.163934469223],[170.13153219223022,266.632684469223],[219.36590719223022,281.617059469223],[218.29559469223022,309.445184469223],[175.48309469223022,305.163934469223]]]},"properties":null}]};
+/*      var geojsonObject = {"type":"FeatureCollection","features":[{"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[117.68621969223021,410.054559469223],[83.43621969223021,373.663934469223],[162.63934469223022,388.648309469223],[117.68621969223021,410.054559469223]]]},"properties":{"notes":"fdssf","origination_date":"11/08/2016","discovered_on":"02/09/1960","pattern":"Wood"}},{"type":"Feature","geometry":{"type":"Polygon","coordinates":[[[175.48309469223022,305.163934469223],[170.13153219223022,266.632684469223],[219.36590719223022,281.617059469223],[218.29559469223022,309.445184469223],[175.48309469223022,305.163934469223]]]},"properties":null}]};*/
+        var featureArray = [];
+        var geojsonObject = {"type":"FeatureCollection","features":featureArray};
+        //var geojsonObjects = [];
+          {% for layer in layers %}
+             var data = {{ layer|tojson }};
+             console.log(data);
+             var geojsonData = jQuery.parseJSON(data);
+             //geojsonObjects.push(geojsonData);
+            featureArray = featureArray.concat(geojsonData.features);
+             //console.log(geojsonObject);
+          {% endfor %}
+        geojsonObject.features = featureArray;
+        console.log(geojsonObject);
+        var olfeatureArray = (new ol.format.GeoJSON()).readFeatures(geojsonObject);
+        console.log(olfeatureArray);
+        /*for (var olfeature in olfeatureArray) {
+          console.log(olfeature.getProperties());
+        }*/
+        function setFeatureStyle(){
 
+        }
+
+        for (var i = olfeatureArray.length - 1; i >= 0; i--) {
+          var olfeature = olfeatureArray[i];
+          if (olfeature.getProperties().pattern) {
+            var icon_image_name = (olfeature.getProperties().pattern+'_Icon').replace(/\s/g, '_');
+            var cnv = document.createElement('canvas');
+            var ctx = cnv.getContext('2d');
+            var img = new Image();
+            img.src = '../static/images/'+icon_image_name+'.png';
+            var pattern = ctx.createPattern(img, 'repeat');
+            var style = new ol.style.Style({
+                  image: new ol.style.Icon({
+                    anchor: [0.5, 0.5],
+                    src: '../static/images/'+icon_image_name+'.png',
+                    opacity: 0.8
+                    //size: 20
+                    //imgSize: [11,11]
+                  }),
+                  stroke: new ol.style.Stroke({
+                    color: '#0C0302',
+                    width: 3
+                  }),
+                  fill: new ol.style.Fill({
+                    color: pattern
+                  })
+                });
+            olfeature.setStyle(style);
+          }
+          
+          console.log(icon_image_name);
+        }
         var source = new ol.source.Vector({
           wrapX: false,
-          features: (new ol.format.GeoJSON()).readFeatures(geojsonObject)});
+          features: olfeatureArray});
+        /*Checkbox check event listener:*/
+        var searchedVectors = {};
+        $('.checkboxdiv input[type=checkbox]').change(function(){
+            if (this.checked) {
+              var checkedfeatures = [];
+              for (var i = olfeatureArray.length - 1; i >= 0; i--) {
+                var olfeature = olfeatureArray[i];
+                console.log(olfeature.getProperties().pattern);
+                if (String(olfeature.getProperties().pattern)==$(this).attr('name')) {
+                  console.log("found it! "+$(this).attr('name'));
+                  checkedfeatures.push(olfeature);
+                }
+              }
+              var thisvector = new ol.layer.Vector({
+                                source: new ol.source.Vector({wrapX: false, features: checkedfeatures})
+                              });
+              console.log(checkedfeatures);
+              searchedVectors[$(this).attr('name')] = thisvector;
+              map.addLayer(thisvector);
+            }
+            else{
+              map.removeLayer(searchedVectors[$(this).attr('name')]);
+            }
+          });
+
         var newsource = new ol.source.Vector({wrapX: false});
-        //existing features/geometries on map
+        //existing features/geometries on map 
         var newfeature = new ol.Feature({
           geometry: new ol.geom.Point([ 247.5859021060188, 349.58634774805404 ]),
           name: 'My Polygon'
         });
-        //source.addFeature(newfeature);
+ 
         //to display existing features
-        var vector = new ol.layer.Vector({
+/*        var vector = new ol.layer.Vector({
           source: source
-        });
+        });*/
         //to record newly drawn features
+        function setNewVectorStyle(type_icon_name){
+          var cnv = document.createElement('canvas');
+          var ctx = cnv.getContext('2d');
+          var img = new Image();
+          img.src = '../static/images/'+type_icon_name+'.png';
+          var pattern = ctx.createPattern(img, 'repeat');
+          var newstyle = new ol.style.Style({
+              image: new ol.style.Icon(/** @type {olx.style.IconOptions} */ ({
+                anchor: [0.5, 0.5],
+                src: '../static/images/'+type_icon_name+'.png',
+                opacity: 0.8
+                //size: 20
+                //imgSize: [11,11]
+              })),
+              stroke: new ol.style.Stroke({
+                color: '#0C0302',
+                width: 3
+              }),
+              fill: new ol.style.Fill({
+                color: pattern
+              })
+            });
+          newvector.setStyle(newstyle);
+        }
+
+
         var newvector = new ol.layer.Vector({
-          source: newsource
+          source: newsource,
         });
+        setNewVectorStyle("Wood_Icon");
         var map = new ol.Map({
-          layers: [raster, vector, newvector],
+          layers: [raster, newvector],
           target: 'map',
           view: new ol.View({
             projection: projection,
@@ -285,65 +442,135 @@
           })
         });
 
-
-        var typeSelect = document.getElementById('shape');
-
         var draw; // global so we can remove it later
-        function addInteraction() {
-          var value = typeSelect.value;
-          if (value !== 'None') {
+        
+        $("#addDetail_li").click(function addInteraction() {
             draw = new ol.interaction.Draw({
               source: newsource,
-              type: /** @type {ol.geom.GeometryType} */ (typeSelect.value)
+              type: typeSelect
             });
             map.addInteraction(draw);
+        });
+          
 
-          }
-        }
-
-
-        /**
-         * Handle change event.
-         */
-        typeSelect.onchange = function() {
-          map.removeInteraction(draw);
-          addInteraction();
-        };
-        addInteraction();
-
-        /*Add Wall Detail button onclick send json to console*/
+        /*Add Wall Detail button onclick send json to console*/ 
         $("#btn_add_detail").click(function(){
 
           var type_text = $("#selected_type").children("span.type_text").text() ;
           var mytype = {pattern: type_text};
           var format = new ol.format.GeoJSON();
           var ff = newsource.getFeatures();
-          /*add notes to properties*/
-          var input_add_notes = {notes: $("#input_add_notes").val()};
-          ff[0].setProperties(input_add_notes);
-          var origination_date = {origination_date: $("#origination_date").val()};
-          ff[0].setProperties(origination_date);
-          var discovered_on = {discovered_on: $("#discovered_on").val()};
-          ff[0].setProperties(discovered_on);
-
-          ff[0].setProperties(mytype);
-          var geojson = format.writeFeatures(ff);//this is the output geojson for backend
-          console.log(geojson);
-          $.ajax({
+          console.log(ff.length);
+          if (ff.length>1) {alert("You can only add details for one shape at one time. Please delete other features.");}
+          else{
+            /*add notes to properties*/
+            var input_add_notes = {notes: $("#input_add_notes").val()};
+            ff[0].setProperties(input_add_notes);
+            var origination_date = {origination_date: $("#origination_date").val()};
+            ff[0].setProperties(origination_date);
+            var discovered_on = {discovered_on: $("#discovered_on").val()};
+            ff[0].setProperties(discovered_on);
+            ff[0].setProperties(mytype);
+            var geojson = format.writeFeatures(ff);//this is the output geojson for backend
+            console.log(geojson);
+            $.ajax({
               type: 'POST',
               contentType: 'application/json',
               url: '/wall_form',
               data: geojson, // or JSON.stringify ({name: 'jonas'}),
               success: location.reload(true),
               dataType: 'json'
-
-          });
+            });
+          }
+          
         });
 
+      
+      // select interaction working on "pointermove"
+      var selectPointerMove = new ol.interaction.Select({
+        condition: ol.events.condition.pointerMove,
+        layers: [newvector],
+        //features
+      });
+      //Select and delete features
+      var selectClick = new ol.interaction.Select({
+          condition: ol.events.condition.click,
+          layers: [newvector],
+          style: new ol.style.Style({
+            image: new ol.style.Circle({
+              radius: 5,
+              fill: new ol.style.Fill({
+                color: '#EE9900'
+              })
+            }),
+            stroke: new ol.style.Stroke({
+              color: '#EE9900',
+              width: 3
+            }),
+            fill: new ol.style.Fill({
+              color: 'rgba(238,153,0, 0.2)'
+            })
+          })
+        });
+      $("#select_feature").click(function(){
+        // select interaction working on "click"
+        map.removeInteraction(draw);
+        map.addInteraction(selectClick);
+        $("#delete_selected_feature").removeClass("hidden");
+        //$(".select_delete_btn_group").append('<button >Delete Selected feature</button>');
+        
+        selectClick.on('select', function(e) {
+          //THIS FUNCTION IS ONLY FOR TEST
+           // var features =  e.target.getFeatures().forEach(function(item){
+              //this.getProperties();
+            //console.log(e.selected);
+            e.selected.find(function(item){
+              //console.log(item.getGeometry().getCoordinates());
+            });
+         //   })
+              
+          });
+      });
+      $("#delete_selected_feature").click(function(){
+          newsource.removeFeature(selectClick.getFeatures().pop());
+/*          selectClick.getFeatures().forEach(function (item){
+            console.log(item);
+            newsource.removeFeature(item);
+            map.removeInteraction(selectClick);
+            //map.addInteraction(selectClick);
+          });*/
+          map.removeInteraction(selectClick);
+          map.addInteraction(selectClick);
+
+        });
+      
+
+/*      var changeInteraction = function() {
+        if (select !== null) {
+          map.removeInteraction(select);
+        }
+
+          select = selectClick;
+
+        if (select !== null) {
+          map.addInteraction(select);
+          select.on('select', function(e) {
+           // var features =  e.target.getFeatures().forEach(function(item){
+              //this.getProperties();
+            e.selected.find(function(item){
+              console.log(item.getGeometry().getCoordinates());
+            });
+         //   })
+              
+          });
+        }
+      };
+      changeInteraction();*/
+
         /*draw end listener*/
-        draw.on('drawend', function(evt){
-          /* for testing:
-          var cars = {pattern: "wood"};
+        //draw.on('drawend', function(evt){
+           //for testing:
+          /*var cars = {pattern: "wood"};
           var feature = evt.feature;
           var p = feature.getGeometry();
           p.setProperties(cars);
@@ -351,16 +578,18 @@
           console.log(p.getProperties());*/
 
           /*style the polygon with pattern images*/
+/*          console.log("draw has ended");
           var type_icon = $("#selected_type").children("span.type_icon").attr('id');
           var feature = evt.feature;
+          if(typeSelect == "Polygon"){
           var cnv = document.createElement('canvas');
           var ctx = cnv.getContext('2d');
           var img = new Image();
-          img.src = '../static/images/'+type_icon+'.png';
+          img.src = 'image/'+type_icon+'.png';
 
           img.onload = function(){
             var pattern = ctx.createPattern(img, 'repeat');
-
+            
             feature.setStyle(new ol.style.Style({
               stroke: new ol.style.Stroke({
                 color: '#0C0302',
@@ -371,25 +600,47 @@
               })
             }));
           };
-        });
+          }*/
+          
 
-        /*Collapse Panel Group Under 'Search By' - Control changing of toggle icon (arrow down/up) on the right side*/
-        $('a[data-toggle="collapse"]').click(function () {
-          $(this).find('span.toggle-icon').toggleClass('glyphicon-menu-up glyphicon-menu-down');
+       // });
+
+        /*Clear the layer when click cancel button*/
+        $("#btn_cancel_detail").click(function(){
+          newsource.clear();
         });
-        /*Turn a Bootstrap dropdown menu into a select list with Bootstrap 3 and jQuery. */
-        $(".dropdown-menu li a").click(function(){
-          var selText = $(this).children().clone();
-          $(this).parents('.btn-group').find('.dropdown-toggle').html(selText).append('<span class="drop_icon glyphicon glyphicon-menu-down"></span>');
-        });
+        /*Enable Date range picker*/
+        $('.input-daterange').datepicker({});
+
+        
+        /*when click search by, add new layor to show*/
+/*        $("#btn_search_by").click(function(){
+          map.addLayer(vector);
+          var selected = [];
+          $('.checkboxdiv input:checked').each(function() {
+              selected.push($(this).attr('name'));
+              console.log(selected);
+              var searchby = {searchBy:"type",types:selected};
+              var searchbyjson = JSON.stringify(searchby);
+              console.log(searchbyjson);*/
+/*              $.ajax({
+                type: 'POST',
+                contentType: 'application/json',
+                url: '/wall_form',
+                data: searchbyjson, // or JSON.stringify ({name: 'jonas'}),
+                //success: location.reload(true),
+                dataType: 'json'
+            });*/
+          //});
+      //  });
 
       </script>
     </div>
 
 
-{% for layer in layers %}
-   <li>{{ layer }}</li>
-{% endfor %}
+<script type="text/javascript">
+
+</script>
 
 
 {% endblock %}
