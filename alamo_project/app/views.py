@@ -33,22 +33,11 @@ def home():
         return render_template('home.html')
 
 
-
-
-@app.route('/home_logged')
-def home_logged():
-    print('### ' + str(current_user))
-    print('### ' + str(current_user.is_authenticated))
-    return render_template('home-logged.html')
-
-
-
-
 @app.route('/login', methods=['POST'])
 def login():
-    print('TESTING: ' + (str(request.base_url)))
+    #print('TESTING: ' + (str(request.base_url)))
     page_requesting = request.referrer
-    print('Page requesting:' + str(page_requesting))
+    #print('Page requesting:' + str(page_requesting))
     print('Email: ' + (str(request.form['email'])))
     print('Password: ' + (str(request.form['password'])))
 

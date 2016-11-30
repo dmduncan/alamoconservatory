@@ -1,0 +1,16 @@
+This site consists of an HTML/CSS/Javascript front end, a Python Flask backend, and a mongoDB database.
+
+The application can be started by running the run.py file.
+This will launch the site which will be running on http://127.0.0.1:5000/.
+This address can be entered into a browser of your choice.
+
+The example user login for the site is the following:
+Email: dcrockett@alamo.com
+Password: remember
+
+The site is connected to a mongoDB database located on remote web service at https://mlab.com/home.
+The login information for the database is the folowing:
+Username: alamoproject
+Password: remember1836
+
+Once logged in you are able to view the collections and documents in the database and add or delete any of your choosing.
