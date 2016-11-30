@@ -14,3 +14,6 @@ Username: alamoproject
 Password: remember1836
 
 Once logged in you are able to view the collections and documents in the database and add or delete any of your choosing.
+
+A copy of python and all of the library dependancies needed to run this project are in the alamo_project/flask folder.
+The python interpreter is located in alamo_project/flask/bin/python3.
